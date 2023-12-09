@@ -42,13 +42,20 @@ def extrapolateNext(historyTriangle: list):
     for numList in historyTriangle:
         finalNum += numList[0][-1]
     return finalNum
+def extrapolateFirst(triangle: list):
+    finalNum = 0
+    triangle = list(reversed(triangle))
+    for numList in triangle:
+        finalNum = numList[0][0] - finalNum
+    return finalNum
+
 def main():
     file = open("C:/Users/egece/Projects/adventOfCode/2/input", "r")
     sum = 0
     for line in file:
         numbers = convertToList(line)
         history = createTriangle(numbers)
-        result = extrapolateNext(history)
+        result = extrapolateFirst(history)
         sum += result
     print(sum)
 
